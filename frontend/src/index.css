@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #D4AF37; /* Gold */
+  --color-secondary: #F5F5DC; /* Beige */
+  --color-accent: #8B4513; /* Brown */
+  --color-cream: #FFFDD0;
+  --color-dark: #1A1A1A; /* Black/Dark Gray */
+  --color-light: #FAFAFA;
+
+  --font-sans: 'Outfit', 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+}
+
+@layer base {
+  body {
+    @apply bg-light text-dark font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-dark;
+  }
+
+  @keyframes border-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Aurora Flowing Background */
+  .bg-aurora {
+    background: linear-gradient(-45deg, #fdfbf7, #fdf7ec, #fcf4e3, #fdfbf7);
+    background-size: 400% 400%;
+    animation: aurora-shift 15s ease infinite;
+  }
+
+  @keyframes aurora-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Floating Orbs */
+  .orb-1, .orb-2 {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    z-index: 0;
+    animation: float-orb 20s ease-in-out infinite alternate;
+  }
+
+  .orb-1 {
+    background: #d4af37; /* Gold */
+    width: 400px;
+    height: 400px;
+    top: -10%;
+    left: -10%;
+  }
+
+  .orb-2 {
+    background: #e6c27a; /* Lighter Gold */
+    width: 500px;
+    height: 500px;
+    bottom: -20%;
+    right: -10%;
+    animation-delay: -10s;
+  }
+
+  @keyframes float-orb {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(100px, 100px) scale(1.2); }
+  }
+}
+
+/* Glassmorphism utilities */
+@layer utilities {
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-lg;
+  }
+  .glass-dark {
+    @apply bg-dark/70 backdrop-blur-md border border-dark/20 shadow-lg text-white;
+  }
+}
